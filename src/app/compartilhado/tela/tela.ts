@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, afterNextRender, inject, input, viewChild } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Icone } from '../icone';
 import { LeituraEmVozAltaService } from '../leitura-em-voz-alta.service';
 
@@ -10,7 +10,7 @@ import { LeituraEmVozAltaService } from '../leitura-em-voz-alta.service';
  */
 @Component({
   selector: 'app-tela',
-  imports: [RouterLink, RouterLinkActive, Icone],
+  imports: [RouterLink, Icone],
   templateUrl: './tela.html',
   styleUrl: './tela.css',
 })
