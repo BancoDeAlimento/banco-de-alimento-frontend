@@ -1,0 +1,43 @@
+<div class="campo">
+  <label class="rotulo" [class.visualmente-oculto]="!rotuloVisivel()" [attr.for]="campoId()">
+    {{ rotulo() }}
+    @if (obrigatorio()) {
+      <span aria-hidden="true">*</span>
+    }
+  </label>
+
+  @if (dica()) {
+    <p class="dica" [id]="campoId() + '-dica'">{{ dica() }}</p>
+  }
+
+  @if (linhas() > 0) {
+    <textarea
+      [id]="campoId()"
+      [rows]="linhas()"
+      [placeholder]="placeholder()"
+      [value]="valor()"
+      [attr.aria-invalid]="erro() ? 'true' : null"
+      [attr.aria-describedby]="descricao()"
+      [attr.aria-required]="obrigatorio() ? 'true' : null"
+      (input)="aoDigitar($event)"
+    ></textarea>
+  } @else {
+    <input
+      [id]="campoId()"
+      [type]="tipo()"
+      [attr.inputmode]="tipo() === 'tel' ? 'tel' : null"
+      [attr.autocomplete]="tipo() === 'tel' ? 'tel-national' : null"
+      [attr.maxlength]="tipo() === 'tel' ? 15 : null"
+      [placeholder]="placeholder()"
+      [value]="valor()"
+      [attr.aria-invalid]="erro() ? 'true' : null"
+      [attr.aria-describedby]="descricao()"
+      [attr.aria-required]="obrigatorio() ? 'true' : null"
+      (input)="aoDigitar($event)"
+    />
+  }
+
+  @if (erro()) {
+    <p class="erro" [id]="campoId() + '-erro'">{{ erro() }}</p>
+  }
+</div>
