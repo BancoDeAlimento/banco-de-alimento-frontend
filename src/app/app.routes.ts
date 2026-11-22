@@ -15,4 +15,10 @@ export const routes: Routes = [
     title: 'Em breve' + sufixo,
     loadComponent: () => import('./paginas/em-breve').then((m) => m.EmBreve),
   },
+
+  // ---------- PARTE 2: pedir alimento (passos 1 a 7 e pedido enviado) ----------
+  // (as rotas da Parte 2 entram aqui)
+
+  // ---------- PARTE 3: doar, preciso de alimento e cadastro de entidade ----------
+  // (as rotas da Parte 3 entram aqui)
 ];
