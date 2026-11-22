@@ -21,4 +21,11 @@ export const routes: Routes = [
 
   // ---------- PARTE 3: doar, preciso de alimento e cadastro de entidade ----------
   // (as rotas da Parte 3 entram aqui)
+
+  // ---------- PARTE 1: erro 404 (precisa ser a última rota) ----------
+  {
+    path: '**',
+    title: 'Página não encontrada' + sufixo,
+    loadComponent: () => import('./paginas/nao-encontrada').then((m) => m.NaoEncontrada),
+  },
 ];
