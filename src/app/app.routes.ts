@@ -11,6 +11,11 @@ export const routes: Routes = [
     loadComponent: () => import('./paginas/inicio').then((m) => m.Inicio),
   },
   {
+    path: 'quero-ajudar',
+    title: 'Quero ajudar' + sufixo,
+    loadComponent: () => import('./paginas/quero-ajudar').then((m) => m.QueroAjudar),
+  },
+  {
     path: 'em-breve',
     title: 'Em breve' + sufixo,
     loadComponent: () => import('./paginas/em-breve').then((m) => m.EmBreve),
