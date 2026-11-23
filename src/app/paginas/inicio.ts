@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CartaoLink } from '../compartilhado/cartao-link';
+import { ImpactoService } from '../compartilhado/impacto.service';
 import { Tela } from '../compartilhado/tela/tela';
 
 /** Tela 01 - Início */
@@ -26,10 +27,10 @@ import { Tela } from '../compartilhado/tela/tela';
         descricao="Para mim ou para minha entidade"
       />
 
-      <!-- TODO: trocar o número fixo pelo valor que vier da API -->
+      <!-- O número vem da API (GET /api/impacto). O aria-live faz o leitor de tela avisar quando ele carrega. -->
       <section class="impacto">
         <p>Alimentos movimentados</p>
-        <p class="numero">143.817 kg</p>
+        <p class="numero" aria-live="polite">{{ numeroImpacto() }}</p>
         <p>Desde 01/2025. O número é atualizado com os registros do Banco.</p>
       </section>
 
@@ -79,8 +80,28 @@ import { Tela } from '../compartilhado/tela/tela';
   `,
 })
 export class Inicio {
+  private readonly impactoService = inject(ImpactoService);
+
+  /** Total em kg vindo da API (null enquanto carrega ou se der erro). */
+  private readonly totalKg = signal<number | null>(null);
+  private readonly falhou = signal(false);
+
+  /** Texto do contador: o número formatado, ou um aviso claro (sem número falso). */
+  protected readonly numeroImpacto = computed(() => {
+    const total = this.totalKg();
+    if (total !== null) return `${total.toLocaleString('pt-BR')} kg`;
+    return this.falhou() ? 'Indisponível no momento' : 'Carregando...';
+  });
+
   protected readonly apresentacao =
     'Serviço público da Prefeitura, ligado à Secretaria de Assistência Social e Combate à Fome. Recebemos alimentos de quem doa e entregamos para quem precisa.';
 
   protected readonly textoParaOuvir = `Banco de Alimentos do Recife. ${this.apresentacao} O que você quer fazer? Quero ajudar: doar comida ou vender para o Banco. Preciso de alimento: para mim ou para minha entidade.`;
+
+  constructor() {
+    this.impactoService.buscar().subscribe({
+      next: (resposta) => this.totalKg.set(resposta.totalKg),
+      error: () => this.falhou.set(true),
+    });
+  }
 }
