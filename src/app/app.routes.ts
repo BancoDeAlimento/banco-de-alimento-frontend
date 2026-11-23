@@ -66,7 +66,23 @@ export const routes: Routes = [
   // (as rotas da Parte 2 entram aqui)
 
   // ---------- PARTE 3: doar, preciso de alimento e cadastro de entidade ----------
-  // (as rotas da Parte 3 entram aqui)
+    {
+    path: 'quero-doar',
+    title: 'Quero doar' + sufixo,
+    loadComponent: () => import('./paginas/quero-doar').then((m) => m.QueroDoar),
+  },
+  {
+    path: 'preciso-de-alimento',
+    title: 'Preciso de alimento' + sufixo,
+    loadComponent: () =>
+      import('./paginas/preciso-de-alimento').then((m) => m.PrecisoDeAlimento),
+  },
+  {
+    path: 'cadastro-entidade',
+    title: 'Cadastro de entidade' + sufixo,
+    loadComponent: () =>
+      import('./paginas/cadastro-entidade').then((m) => m.CadastroEntidade),
+  },
 
   // ---------- PARTE 1: erro 404 (precisa ser a última rota) ----------
   {
