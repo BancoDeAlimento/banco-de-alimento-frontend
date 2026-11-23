@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Aviso } from '../compartilhado/aviso';
-import { Tela } from '../compartilhado/tela/tela';
+import { Aviso } from '../../compartilhado/componentes/aviso';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 /** Erro 404: aparece quando o endereço digitado não existe. */
 @Component({

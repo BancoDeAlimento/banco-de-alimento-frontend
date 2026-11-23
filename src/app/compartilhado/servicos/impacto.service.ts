@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Impacto {
   totalKg: number;
@@ -11,8 +12,7 @@ export interface Impacto {
 export class ImpactoService {
   private readonly http = inject(HttpClient);
 
-  // TODO: mover o endereço da API para um arquivo de ambiente
-  private readonly url = 'http://localhost:8080/api/impacto';
+  private readonly url = `${environment.apiUrl}/api/impacto`;
 
   buscar(): Observable<Impacto> {
     return this.http.get<Impacto>(this.url);

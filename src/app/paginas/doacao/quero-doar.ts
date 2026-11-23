@@ -1,11 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Aviso } from '../compartilhado/aviso';
-import { CampoTexto } from '../compartilhado/campo-texto/campo-texto';
-import { EnvioService, mensagemDoErro } from '../compartilhado/envio.service';
-import { GrupoOpcoes, Opcao } from '../compartilhado/grupo-opcoes/grupo-opcoes';
-import { telefoneValido } from '../compartilhado/telefone';
-import { Tela } from '../compartilhado/tela/tela';
+import { Aviso } from '../../compartilhado/componentes/aviso';
+import { CampoTexto } from '../../compartilhado/componentes/formulario/campo-texto';
+import { EnvioService, mensagemDoErro } from '../../compartilhado/servicos/envio.service';
+import { GrupoOpcoes, Opcao } from '../../compartilhado/componentes/formulario/grupo-opcoes';
+import { telefoneValido } from '../../compartilhado/utilitarios/telefone';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 const SEM_ERROS = { quem: '', nome: '', telefone: '', oQue: '', entrega: '' };
 

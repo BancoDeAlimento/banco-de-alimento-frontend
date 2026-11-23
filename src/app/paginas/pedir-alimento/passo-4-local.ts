@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { BotaoFalar } from '../compartilhado/botao-falar';
-import { CampoTexto } from '../compartilhado/campo-texto/campo-texto';
+import { BotaoFalar } from '../../compartilhado/componentes/botao-falar';
+import { CampoTexto } from '../../compartilhado/componentes/formulario/campo-texto';
 import { PassoLayout } from './passo-layout';
 import { PedidoService } from './pedido.service';
 

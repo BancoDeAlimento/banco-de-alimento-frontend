@@ -1,5 +1,5 @@
 import { Component, computed, input, model } from '@angular/core';
-import { formatarTelefone } from '../telefone';
+import { formatarTelefone } from '../../utilitarios/telefone';
 
 /**
  * Campo de texto com rótulo visível, dica e mensagem de erro.

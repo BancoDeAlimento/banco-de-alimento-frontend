@@ -1,8 +1,8 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { CampoTexto } from '../compartilhado/campo-texto/campo-texto';
-import { GrupoOpcoes, Opcao } from '../compartilhado/grupo-opcoes/grupo-opcoes';
-import { telefoneValido } from '../compartilhado/telefone';
+import { CampoTexto } from '../../compartilhado/componentes/formulario/campo-texto';
+import { GrupoOpcoes, Opcao } from '../../compartilhado/componentes/formulario/grupo-opcoes';
+import { telefoneValido } from '../../compartilhado/utilitarios/telefone';
 import { PassoLayout } from './passo-layout';
 import { PedidoService } from './pedido.service';
 

@@ -1,6 +1,6 @@
 import { Component, input, output, signal } from '@angular/core';
-import { Aviso } from '../compartilhado/aviso';
-import { Tela } from '../compartilhado/tela/tela';
+import { Aviso } from '../../compartilhado/componentes/aviso';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 /**
  * Moldura dos passos do pedido: usa a <app-tela> e acrescenta "Passo X de 7", a barra de
