@@ -63,6 +63,7 @@ export const routes: Routes = [
     title: 'Pedido enviado' + sufixo,
     loadComponent: () => import('./pedir-alimento/pedido-enviado').then((m) => m.PedidoEnviado),
   },
+  // (as rotas da Parte 2 entram aqui)
 
   // ---------- PARTE 3: doar, preciso de alimento e cadastro de entidade ----------
   // (as rotas da Parte 3 entram aqui)

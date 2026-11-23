@@ -1,0 +1,14 @@
+<div class="grupo" [class.linha]="layout() === 'linha'" role="radiogroup" [attr.aria-labelledby]="rotuloId()">
+  @for (opcao of opcoes(); track opcao.valor) {
+    <label class="opcao">
+      <input
+        type="radio"
+        [name]="nome()"
+        [value]="opcao.valor"
+        [checked]="valor() === opcao.valor"
+        (change)="valor.set(opcao.valor)"
+      />
+      <span>{{ opcao.texto }}</span>
+    </label>
+  }
+</div>

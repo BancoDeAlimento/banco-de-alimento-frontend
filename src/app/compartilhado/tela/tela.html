@@ -1,0 +1,29 @@
+<div class="tela">
+  <header class="topo">
+    @if (voltarPara(); as destino) {
+      <a class="voltar" [routerLink]="destino">
+        <app-icone nome="seta-esquerda" />
+        {{ rotuloVoltar() }}
+      </a>
+    }
+    <p class="marca" [class.marca-direita]="voltarPara()">
+      <strong>Banco de Alimentos</strong>
+      <span>do Recife</span>
+    </p>
+  </header>
+
+  <main class="conteudo">
+    <ng-content select="[acima-do-titulo]" />
+
+    <h1 #tituloTela id="titulo-tela" class="titulo" tabindex="-1">{{ titulo() }}</h1>
+
+    @if (leitura.disponivel) {
+      <button type="button" class="ouvir" (click)="ouvir()">
+        <app-icone nome="som" />
+        Ouvir
+      </button>
+    }
+
+    <ng-content />
+  </main>
+</div>

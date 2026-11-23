@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0 1rem;
+  border: 2px solid var(--cor-borda-campo);
+  border-radius: var(--raio);
+  background: #fff;
+  color: var(--cor-texto);
+}
+
+input {
+  min-height: var(--altura-controle);
+}
+
+textarea {
+  padding-block: 0.75rem;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--cor-placeholder);
+  opacity: 1;
+}
+
+[aria-invalid='true'] {
+  border-color: var(--cor-erro);
+}
