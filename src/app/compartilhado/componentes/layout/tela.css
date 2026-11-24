@@ -103,6 +103,11 @@
   background: var(--cor-selecionado);
 }
 
+/* Rodapé: só no desktop. */
+.rodape {
+  display: none;
+}
+
 /* Telas maiores que um celular: coluna no meio. */
 @media (min-width: 31rem) {
   .tela {
@@ -196,5 +201,38 @@
   .titulo {
     font-size: 3rem;
     font-weight: 700;
+  }
+
+  /* Rodapé (aparece só aqui). */
+  .rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: auto;
+    padding: 2rem max(2rem, calc((100% - 70rem) / 2));
+    background: var(--cor-titulo);
+    color: #fff;
+  }
+
+  .rodape-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .rodape strong {
+    font-family: var(--fonte-titulo);
+    font-size: 1rem;
+    letter-spacing: normal;
+  }
+
+  .rodape span {
+    font-size: 1rem;
+  }
+
+  .rodape a {
+    color: #fff;
+    font-weight: 600;
   }
 }

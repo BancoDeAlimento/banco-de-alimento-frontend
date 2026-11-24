@@ -35,15 +35,6 @@ import { Tela } from '../../compartilhado/componentes/layout/tela';
         <p class="numero" [class.numero-aviso]="!temNumero()" aria-live="polite">{{ numeroImpacto() }}</p>
         <p>Desde 01/2025. O número é atualizado com os registros do Banco.</p>
       </section>
-
-      <footer class="rodape">
-        <div class="rodape-texto">
-          <strong>Banco de Alimentos do Recife</strong>
-          <span>Secretaria de Assistência Social e Combate à Fome</span>
-        </div>
-        <!-- TODO: colocar o endereço da página de contato quando existir -->
-        <a href="#contato">Contato e endereço</a>
-      </footer>
     </app-tela>
   `,
   styleUrl: './inicio.css',

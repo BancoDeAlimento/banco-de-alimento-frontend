@@ -21,32 +21,6 @@
   line-height: 1.2;
 }
 
-/* fica até as bordas da tela, anulando o espaçamento lateral do conteúdo */
-.rodape {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin: 1rem -1rem -2rem;
-  padding: 1.25rem 1rem 1.5rem;
-  background: var(--cor-titulo);
-  color: #fff;
-  font-size: 0.875rem;
-}
-
-/* No celular este bloco não muda nada: os textos seguem em coluna, como antes. */
-.rodape-texto {
-  display: contents;
-}
-
-.rodape strong {
-  font-size: 1rem;
-}
-
-.rodape a {
-  color: #fff;
-  font-weight: 600;
-}
-
 /*
  *  /////// Desktop /////////
  * Texto e cartão laranja lado a lado e os dois cartões embaixo.
@@ -61,14 +35,13 @@
   :host ::ng-deep .tela .conteudo {
     display: grid;
     grid-template-columns: var(--margem) minmax(0, 1fr) 4rem 25rem var(--margem);
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     align-content: start;
     row-gap: 1.25rem;
     column-gap: 0;
     width: auto;
     margin-inline: 0;
-    /* sem espaço embaixo: o rodapé encosta no fim da página */
-    padding: 3.5rem 0 0;
+    padding: 3.5rem 0;
   }
 
   :host ::ng-deep .tela .conteudo > * {
@@ -139,23 +112,5 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     margin-top: 0.5rem;
-  }
-
-  /* Rodapé em largura total: texto à esquerda, link à direita. */
-  :host .rodape {
-    grid-column: 1 / -1;
-    grid-row: 5;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2rem 0 0;
-    padding: 2rem var(--margem);
-    font-size: 1rem;
-  }
-
-  .rodape-texto {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
   }
 }
