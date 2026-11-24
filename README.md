@@ -169,7 +169,6 @@ Para o navegador aceitar a resposta, o backend precisa liberar o CORS para `http
 ## Pendências conhecidas
 
 - Layout de desktop dos passos do pedido, "Pedido enviado" e "Cadastro de entidade".
-- Rodapé no desktop só existe na tela de início; no Figma todas as telas têm.
 - URL do backend em produção e CORS do front publicado.
 - `href="#contato"` em "Contato e endereço" é provisório (falta a página de contato).
 - "Sou produtor rural" e "Conhecer o Banco" levam para `/em-breve`.
