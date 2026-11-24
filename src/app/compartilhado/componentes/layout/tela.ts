@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, afterNextRender, inject, input, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Icone } from '../icone';
-import { LeituraEmVozAltaService } from '../leitura-em-voz-alta.service';
+import { LeituraEmVozAltaService } from '../../servicos/leitura-em-voz-alta.service';
 
 /**
  * Moldura de todas as telas: topo (Voltar + nome do banco), título, botão "Ouvir" e o conteúdo.

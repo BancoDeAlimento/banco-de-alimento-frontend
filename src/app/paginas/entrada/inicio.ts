@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { CartaoLink } from '../compartilhado/cartao-link';
-import { ImpactoService } from '../compartilhado/impacto.service';
-import { Tela } from '../compartilhado/tela/tela';
+import { CartaoLink } from '../../compartilhado/componentes/cartao-link';
+import { ImpactoService } from '../../compartilhado/servicos/impacto.service';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 /** Tela 01 - Início */
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CartaoLink } from '../compartilhado/cartao-link';
-import { Tela } from '../compartilhado/tela/tela';
+import { CartaoLink } from '../../compartilhado/componentes/cartao-link';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 /** Tela 02 - Quero ajudar */
 @Component({

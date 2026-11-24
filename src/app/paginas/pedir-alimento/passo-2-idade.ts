@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { GrupoOpcoes, Opcao } from '../compartilhado/grupo-opcoes/grupo-opcoes';
+import { GrupoOpcoes, Opcao } from '../../compartilhado/componentes/formulario/grupo-opcoes';
 import { PassoLayout } from './passo-layout';
 import { PedidoService } from './pedido.service';
 

@@ -1,8 +1,8 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Aviso } from '../compartilhado/aviso';
-import { EnvioService, mensagemDoErro } from '../compartilhado/envio.service';
-import { GrupoOpcoes, Opcao } from '../compartilhado/grupo-opcoes/grupo-opcoes';
+import { Aviso } from '../../compartilhado/componentes/aviso';
+import { EnvioService, mensagemDoErro } from '../../compartilhado/servicos/envio.service';
+import { GrupoOpcoes, Opcao } from '../../compartilhado/componentes/formulario/grupo-opcoes';
 import { PassoLayout } from './passo-layout';
 import { PedidoService } from './pedido.service';
 

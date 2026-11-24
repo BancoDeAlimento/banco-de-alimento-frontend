@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Aviso } from '../compartilhado/aviso';
-import { CartaoLink } from '../compartilhado/cartao-link';
-import { Tela } from '../compartilhado/tela/tela';
+import { Aviso } from '../../compartilhado/componentes/aviso';
+import { CartaoLink } from '../../compartilhado/componentes/cartao-link';
+import { Tela } from '../../compartilhado/componentes/layout/tela';
 
 /** Tela 04 - Preciso de alimento */
 @Component({
