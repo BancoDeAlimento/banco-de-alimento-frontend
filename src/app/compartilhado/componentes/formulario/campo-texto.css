@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0 1rem;
+  border: 2px solid var(--cor-borda-campo);
+  border-radius: var(--raio);
+  background: #fff;
+  color: var(--cor-texto);
+}
+
+input {
+  min-height: var(--altura-controle);
+}
+
+textarea {
+  padding-block: 0.75rem;
+  resize: vertical;
+}
+
+::placeholder {
+  color: var(--cor-placeholder);
+  opacity: 1;
+}
+
+[aria-invalid='true'] {
+  border-color: var(--cor-erro);
+}
+
+@media (min-width: 64rem) {
+  input,
+  textarea {
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+
+  textarea {
+    min-height: 7.5rem;
+    padding-block: 1.125rem;
+  }
+}

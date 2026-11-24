@@ -1,0 +1,16 @@
+/* Celular: cartões em coluna, com o mesmo espaço de sempre entre eles. */
+.escolhas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Desktop: cartões lado a lado, com a mesma largura. */
+@media (min-width: 64rem) {
+  .escolhas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 2rem;
+    margin-top: 0.5rem;
+  }
+}
