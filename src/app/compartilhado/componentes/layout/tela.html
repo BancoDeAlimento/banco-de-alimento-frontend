@@ -10,6 +10,35 @@
       <strong>Banco de Alimentos</strong>
       <span>do Recife</span>
     </p>
+
+    <!-- Só aparece no desktop (o CSS esconde no celular). -->
+    <div class="topo-direita">
+      <nav class="navegacao" aria-label="Principal">
+        <a routerLink="/" [class.ativo]="secao() === 'inicio'" [attr.aria-current]="secao() === 'inicio' ? 'page' : null">
+          Início
+        </a>
+        <a
+          routerLink="/quero-ajudar"
+          [class.ativo]="secao() === 'ajudar'"
+          [attr.aria-current]="secao() === 'ajudar' ? 'page' : null"
+        >
+          Quero ajudar
+        </a>
+        <a
+          routerLink="/preciso-de-alimento"
+          [class.ativo]="secao() === 'alimento'"
+          [attr.aria-current]="secao() === 'alimento' ? 'page' : null"
+        >
+          Preciso de alimento
+        </a>
+      </nav>
+      @if (leitura.disponivel) {
+        <button type="button" class="ouvir" (click)="ouvir()">
+          <app-icone nome="som" />
+          Ouvir
+        </button>
+      }
+    </div>
   </header>
 
   <main class="conteudo">
@@ -17,8 +46,9 @@
 
     <h1 #tituloTela id="titulo-tela" class="titulo" tabindex="-1">{{ titulo() }}</h1>
 
+    <!-- No desktop o botão "Ouvir" fica no topo; este some. -->
     @if (leitura.disponivel) {
-      <button type="button" class="ouvir" (click)="ouvir()">
+      <button type="button" class="ouvir ouvir-celular" (click)="ouvir()">
         <app-icone nome="som" />
         Ouvir
       </button>
@@ -26,4 +56,14 @@
 
     <ng-content />
   </main>
+
+  <!-- Só aparece no desktop. -->
+  <footer class="rodape">
+    <div class="rodape-texto">
+      <strong>Banco de Alimentos do Recife</strong>
+      <span>Secretaria de Assistência Social e Combate à Fome</span>
+    </div>
+    <!-- TODO: colocar o endereço da página de contato quando existir -->
+    <a href="#contato">Contato e endereço</a>
+  </footer>
 </div>

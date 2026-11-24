@@ -1,6 +1,6 @@
 # Banco de Alimento - Frontend
 
-Interface web do projeto **Banco de Alimento**, feita com Angular. Projeto final da Residência Porto Digital - SENAC com a Capgemini (3º período).
+Interface web do projeto Banco de Alimento, feita com Angular. Projeto final da Residência Porto Digital - SENAC com a Capgemini (3º período).
 
 A API (Java + Spring Boot) fica em outro repositório: [banco-de-alimento-backend](https://github.com/BancoDeAlimento/banco-de-alimento-backend)
 
@@ -8,11 +8,11 @@ A API (Java + Spring Boot) fica em outro repositório: [banco-de-alimento-backen
 
 O Banco de Alimento conecta quem tem alimentos para doar com quem precisa receber. A ideia é facilitar o cadastro das doações e o controle do que está disponível, evitando desperdício.
 
-O frontend é o **Banco de Alimentos do Recife**: um serviço público ligado à Secretaria de Assistência Social e Combate à Fome. As telas foram pensadas para qualquer pessoa usar, com texto grande, botão "Ouvir" (leitura em voz alta) e aviso quando a internet cai.
+O frontend é o Banco de Alimentos do Recife: um serviço público ligado à Secretaria de Assistência Social e Combate à Fome. As telas foram pensadas para qualquer pessoa usar, com texto grande, botão "Ouvir" (leitura em voz alta) e aviso quando a internet cai.
 
 > **A definir pelo time:** nome do projeto
 
-### Funcionalidades
+## Funcionalidades
 
 - [x] Tela de início, com as opções "Quero ajudar" e "Preciso de alimento"
 - [x] Tela "Quero ajudar"
@@ -22,20 +22,21 @@ O frontend é o **Banco de Alimentos do Recife**: um serviço público ligado à
 - [x] Botão "Ouvir", que lê o texto da tela em voz alta
 - [x] Faixa de aviso quando a internet cai
 - [x] Páginas "Em breve" e "Página não encontrada"
+- [x] PWA: app instalável, com manifesto e service worker
+- [x] Layout de desktop: início, "Quero ajudar", "Preciso de alimento" e "Quero doar" <!-- CONFERIR -->
 - [ ] Contador de alimentos movimentados vindo da API (BDA-19, em andamento)
-- [ ] Layout de desktop da tela de início
+- [ ] Layout de desktop dos passos do pedido, "Pedido enviado" e "Cadastro de entidade"
 
 ## Autores
 
-<a href="https://github.com/BancoDeAlimento/banco-de-alimento-frontend/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=BancoDeAlimento/banco-de-alimento-frontend" />
-</a>
+(manter a lista atual)
 
 ## Tecnologias
 
 | Tecnologia | Versão |
 |---|---|
 | Angular | 22 |
+| @angular/service-worker | 22.2.4 (PWA) |
 | Node.js | 24 (LTS) |
 | npm | vem junto com o Node.js |
 | TypeScript | instalado com o Angular |
@@ -44,37 +45,28 @@ O frontend é o **Banco de Alimentos do Recife**: um serviço público ligado à
 ## Pré-requisitos
 
 - Node.js 24 (LTS). Para conferir, rode `node -v`
-- Angular CLI:
-
-  ```bash
-  npm install -g @angular/cli
-  ```
-
+- Angular CLI: `npm install -g @angular/cli`
 - Git
-- O backend rodando em `http://localhost:8080` (veja as instruções no [repositório do backend](https://github.com/BancoDeAlimento/banco-de-alimento-backend))
+- O backend rodando em `http://localhost:8080` (veja as instruções no repositório do backend)
 
 ## Como rodar
 
-1. Clone o repositório:
+```bash
+git clone https://github.com/BancoDeAlimento/banco-de-alimento-frontend.git
+cd banco-de-alimento-frontend
+npm install
+ng serve
+```
 
-   ```bash
-   git clone https://github.com/BancoDeAlimento/banco-de-alimento-frontend.git
-   cd banco-de-alimento-frontend
-   ```
+Abra `http://localhost:4200` no navegador.
 
-2. Instale as dependências:
+### Portas usadas
 
-   ```bash
-   npm install
-   ```
-
-3. Rode a aplicação:
-
-   ```bash
-   ng serve
-   ```
-
-4. Abra `http://localhost:4200` no navegador.
+| Porta | Uso |
+|---|---|
+| 4200 | `ng serve` (desenvolvimento, sem PWA) |
+| 8080 | backend (Spring Boot) |
+| 8081 | build de produção, para testar o PWA |
 
 ### Outros comandos
 
@@ -89,6 +81,10 @@ Antes de abrir um Pull Request, rode `ng build` e `ng test --watch=false`: os do
 ## Estrutura de pastas
 
 ```
+public/
+├── icons/                          ícones do PWA, favicons e apple-touch-icon
+└── manifest.webmanifest            manifesto do PWA
+ngsw-config.json                    cache do service worker
 src/
 ├── app/
 │   ├── paginas/                    uma pasta por grupo de telas
@@ -99,24 +95,27 @@ src/
 │   │   └── erro/                   em-breve.ts, nao-encontrada.ts
 │   ├── compartilhado/              o que as telas reaproveitam
 │   │   ├── componentes/
-│   │   │   ├── layout/             tela (topo, título, botão "Ouvir" e conteúdo)
+│   │   │   ├── layout/             tela (topo, navegação, título, botão "Ouvir" e conteúdo)
 │   │   │   ├── formulario/         campo-texto, grupo-opcoes
 │   │   │   └── aviso, botao-falar, cartao-link, icone, sem-internet
 │   │   ├── servicos/               envio, impacto, leitura-em-voz-alta
 │   │   └── utilitarios/            telefone (validação)
-│   ├── app.config.ts               configurações do app (rotas e HttpClient)
+│   ├── app.config.ts               configurações do app (rotas, HttpClient e service worker)
 │   ├── app.routes.ts               rotas
 │   └── app.ts / app.html           componente raiz
 ├── environments/                   endereço da API por ambiente
 ├── index.html
-└── styles.css                      cores e medidas globais (variáveis CSS)
+└── styles.css                      cores, medidas e fontes globais (variáveis CSS)
 ```
 
-Regra para colocar um arquivo novo:
+Regras para o código:
 
-- Tela nova: em `paginas/`, na pasta do grupo dela.
-- Algo que mais de uma tela usa: em `compartilhado/`.
-- Imports sempre por caminho relativo (`../../compartilhado/...`). Ao mover um arquivo, rode `ng build` para achar os imports que ficaram velhos.
+- **Tela nova:** em `paginas/`, na pasta do grupo dela.
+- **Algo que mais de uma tela usa:** em `compartilhado/`.
+- **Imports** sempre por caminho relativo (`../../compartilhado/...`). Ao mover um arquivo, rode `ng build` para achar os imports que ficaram velhos.
+- **Nomes sem repetição:** a pasta é o grupo e o arquivo é a peça (nada de `tela/tela.ts`).
+- **CSS separado do TypeScript:** cada componente tem o CSS em um arquivo próprio, ao lado do `.ts`, com `styleUrl: './nome.css'`. Não use `styles` inline.
+- **CSS mobile first:** o estilo base é o do celular e o desktop (`@media (min-width: 64rem)`) fica no fim do arquivo, seguindo o Figma.
 
 ## Telas e rotas
 
@@ -131,107 +130,50 @@ As rotas ficam em `src/app/app.routes.ts`, carregadas sob demanda (`loadComponen
 
 As demais rotas (doação, cadastro de entidade e pedir alimento) estão listadas no próprio `app.routes.ts`, separadas por comentários por parte do projeto.
 
+## PWA
+
+O app é instalável e abre offline. O manifesto fica em `public/manifest.webmanifest`, os ícones em `public/icons/` e a configuração de cache em `ngsw-config.json`. O service worker é registrado em `app.config.ts` com `provideServiceWorker`.
+
+O service worker **só funciona no build de produção**, não no `ng serve`. Para testar:
+
+```bash
+ng build
+npx http-server -p 8081 -c-1 dist/banco-de-alimento-frontend/browser
+```
+
+Abra `http://localhost:8081` (a 8080 é do backend). No Chrome, em DevTools → Aplicativo, confira o manifesto e o service worker. A instalação no celular exige HTTPS.
+
 ## Ambientes
 
 O endereço da API fica em `src/environments/`:
 
-| Arquivo | Quando é usado | `apiUrl` |
+| Arquivo | Quando é usado | apiUrl |
 |---|---|---|
 | `environment.development.ts` | `ng serve` (desenvolvimento) | `http://localhost:8080` |
 | `environment.ts` | `ng build` (produção) | marcador, falta a URL do backend publicado |
 
-Para usar o endereço em um serviço:
-
-```ts
-import { environment } from '../../../environments/environment';
-
-private readonly url = `${environment.apiUrl}/api/impacto`;
-```
+Enquanto o marcador existir, o contador de impacto mostra "Indisponível no momento" no build de produção.
 
 Não coloque senha, token nem chave nesses arquivos: eles vão para o repositório.
 
 ## Como o frontend se comunica com o backend
 
-O frontend chama a API usando o `HttpClient` do Angular (configurado com `provideHttpClient()` em `app.config.ts`). Os dados mostrados nas telas vêm das respostas JSON do backend. Se a API estiver desligada, a tela mostra uma mensagem clara em vez de um número falso.
+O frontend chama a API usando o `HttpClient` do Angular (`provideHttpClient()` em `app.config.ts`). Se a API estiver desligada, a tela mostra uma mensagem clara em vez de um número falso.
 
 Para o navegador aceitar a resposta, o backend precisa liberar o CORS para `http://localhost:4200`.
-
-> **A definir pelo time:** completar a tabela conforme os endpoints forem integrados.
 
 | Tela | Endpoint usado |
 |---|---|
 | Início (contador de alimentos movimentados) | `GET /api/impacto` (BDA-19, em andamento) |
-| A definir | `GET /api/...` |
+
+## Pendências conhecidas
+
+- Layout de desktop dos passos do pedido, "Pedido enviado" e "Cadastro de entidade".
+- URL do backend em produção e CORS do front publicado.
+- `href="#contato"` em "Contato e endereço" é provisório (falta a página de contato).
+- "Sou produtor rural" e "Conhecer o Banco" levam para `/em-breve`.
+- Placeholder "macarrão" no código e "macaxeira" no Figma.
 
 ## Como contribuir
 
-### Branches
-
-- A `develop` é a branch de integração: todo Pull Request vai para ela. A `main` só recebe o que o time decidir lançar.
-- Ninguém dá push direto na `main` nem na `develop`.
-- Nome da branch: `bda-<número do card>-<função>`, tudo minúsculo e separado por hífen.
-  - Exemplo: `bda-8-tela-doacoes`
-- Uma branch por card do Jira. Depois do merge, a branch pode ser apagada. Não criar branch à toa.
-
-### Commits
-
-Sempre em português, no formato `tipo: o que foi feito`:
-
-| Tipo | Quando usar | Exemplo |
-|---|---|---|
-| `feat:` | funcionalidade nova | `feat: cria tela de listagem de doações` |
-| `fix:` | correção de erro | `fix: corrige o formulário de cadastro` |
-| `docs:` | documentação | `docs: atualiza tabela de endpoints` |
-
-Depois dos dois pontos, tudo minúsculo, com o verbo no presente ("cria", "corrige", "atualiza") e a mensagem curta. Um commit por parte do código, para dar para entender o histórico lendo só as mensagens.
-
-### Atualizar o local com o remoto
-
-Sempre puxar as atualizações do remoto **antes de começar a trabalhar** e **antes de abrir o PR**:
-
-```bash
-git fetch --all        # baixa as atualizações de todas as branches
-git checkout develop
-git pull               # atualiza a develop local
-git checkout bda-8-tela-doacoes
-git merge develop      # traz as novidades da develop pra sua branch
-```
-
-Depois do merge, rode `ng build` e `ng test --watch=false`. Se a `develop` trouxe arquivos que mudaram de pasta, o build mostra os imports que precisam de ajuste.
-
-### Pull Request
-
-- A base do PR é a `develop`.
-- O título segue o mesmo padrão dos commits. Exemplo: `feat: cria tela de listagem de doações`
-- A descrição segue este modelo:
-
-```
-## O que foi feito
-(explique em poucas linhas)
-
-## Card do Jira
-BDA-
-
-## Como testar
-(passo a passo curto pra conferir)
-
-## Checklist
-- [ ] Atualizei minha branch com a `develop` (`git fetch --all` e `git merge develop`)
-- [ ] O projeto roda sem erro
-- [ ] Os commits seguem o padrão (`feat:`, `fix:`, `docs:`) em português
-- [ ] Atualizei o README, se mudei endpoint ou tela
-```
-
-- O PR precisa de aprovação de outra pessoa do time antes do merge. Ninguém aprova o próprio PR.
-- No merge, use **Create a merge commit**, para manter os commits separados por parte do código.
-
-## Integrantes
-
-| Nome | Área |
-|---|---|
-| Allany Dias | Frontend |
-| Mayara Marina | Frontend |
-| Vinícius Santiago | Frontend |
-| Victoria Soares | Backend |
-| Luis Gabriel | Backend |
-| Filipe Gabriel | Backend |
+(manter as seções de Branches, Commits, Atualizar o local com o remoto, Pull Request e Integrantes como estão)
