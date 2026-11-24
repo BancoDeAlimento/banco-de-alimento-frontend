@@ -35,3 +35,16 @@ textarea {
 [aria-invalid='true'] {
   border-color: var(--cor-erro);
 }
+
+@media (min-width: 64rem) {
+  input,
+  textarea {
+    font-size: 1.125rem;
+    line-height: 1.45;
+  }
+
+  textarea {
+    min-height: 7.5rem;
+    padding-block: 1.125rem;
+  }
+}

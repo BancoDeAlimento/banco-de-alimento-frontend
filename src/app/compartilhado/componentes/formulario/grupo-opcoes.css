@@ -83,3 +83,39 @@ input:focus-visible {
   background: var(--cor-primaria);
   color: #fff;
 }
+
+/* Desktop : opções lado a lado, com mais de 3, quebram de linha. */
+@media (min-width: 64rem) {
+  .grupo:not(.linha) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .grupo:not(.linha) .opcao {
+    flex: 1 1 12rem;
+    min-width: 0;
+  }
+
+  .opcao {
+    gap: 0.875rem;
+    padding: 1.125rem 1rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* Borda de 3px sem empurrar o layout: 2px de borda + 1px de sombra interna. */
+  .opcao:has(input:checked) {
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px var(--cor-primaria);
+  }
+
+  input {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  input:checked {
+    background: radial-gradient(circle, var(--cor-primaria) 0 0.4375rem, #fff 0.5rem);
+  }
+}

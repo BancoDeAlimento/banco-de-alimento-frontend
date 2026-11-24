@@ -14,16 +14,7 @@ import { Aviso } from './aviso';
       </div>
     }
   `,
-  styles: `
-    .faixa {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      max-width: 30rem;
-      margin-inline: auto;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
-    }
-  `,
+  styleUrl: './sem-internet.css',
 })
 export class SemInternet {
   protected readonly conectado = signal(navigator.onLine);

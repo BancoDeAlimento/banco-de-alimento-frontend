@@ -25,13 +25,7 @@ const Reconhecimento =
       <app-aviso tipo="erro" titulo="Não deu para usar a voz">{{ erro() }}</app-aviso>
     }
   `,
-  styles: `
-    :host {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-  `,
+  styleUrl: './botao-falar.css',
 })
 export class BotaoFalar {
   readonly rotulo = input('Falar');

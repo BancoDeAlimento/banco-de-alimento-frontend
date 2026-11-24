@@ -30,16 +30,7 @@ const ICONES: Record<string, string> = {
       <path [attr.d]="caminho()" fill="currentColor" />
     </svg>
   `,
-  styles: `
-    :host {
-      display: inline-flex;
-      flex: none;
-    }
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  `,
+  styleUrl: './icone.css',
 })
 export class Icone {
   readonly nome = input.required<string>();

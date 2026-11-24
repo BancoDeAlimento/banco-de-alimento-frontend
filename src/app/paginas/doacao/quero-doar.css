@@ -1,0 +1,100 @@
+:host {
+  display: block;
+}
+
+/* Mobile first: tudo em uma coluna, como já era. */
+.doacao {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.duas-colunas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* A coluna de apoio só existe no desktop. */
+.apoio {
+  display: none;
+}
+
+.passos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.passo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 1.1875rem; /* 19px */
+  line-height: 1.475;
+}
+
+.passo-numero {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--cor-primaria);
+  color: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+
+.nota-apoio {
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  background: var(--cor-selecionado);
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+/* Desktop: cartão de 700px + apoio de 372px, com 48px entre eles. */
+@media (min-width: 64rem) {
+  .introducao {
+    font-size: 1.3125rem; /* 21px */
+    line-height: 1.52;
+  }
+
+  .doacao {
+    display: grid;
+    grid-template-columns: minmax(0, 700fr) minmax(0, 372fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .cartao {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background: #fff;
+  }
+
+  .duas-colunas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* A frase do celular passa para a coluna de apoio. */
+  .nota-celular {
+    display: none;
+  }
+
+  .apoio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

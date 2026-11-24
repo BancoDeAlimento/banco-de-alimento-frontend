@@ -2,7 +2,7 @@
   display: block;
 }
 
-/* Mobile first: a tela ocupa a largura toda; em telas grandes vira uma coluna no meio. */
+/* Mobile first: a tela ocupa a largura toda. */
 .tela {
   display: flex;
   flex-direction: column;
@@ -10,12 +10,6 @@
   min-height: 100dvh;
   margin-inline: auto;
   background: var(--cor-fundo);
-}
-
-@media (min-width: 31rem) {
-  .tela {
-    border-inline: 1px solid var(--cor-divisoria);
-  }
 }
 
 /* Topo */
@@ -63,6 +57,11 @@
   font-size: 0.875rem;
 }
 
+/* Links do topo e "Ouvir" do topo: só no desktop. */
+.topo-direita {
+  display: none;
+}
+
 /* Corpo */
 .conteudo {
   display: flex;
@@ -102,4 +101,100 @@
 
 .ouvir:hover {
   background: var(--cor-selecionado);
+}
+
+/* Telas maiores que um celular: coluna no meio. */
+@media (min-width: 31rem) {
+  .tela {
+    border-inline: 1px solid var(--cor-divisoria);
+  }
+}
+
+/* Desktop: largura total, topo com links, conteúdo de 1120px centralizado. */
+@media (min-width: 64rem) {
+  .tela {
+    max-width: none;
+    border-inline: 0;
+  }
+
+  /* Alinha o topo com o conteúdo. */
+  .topo {
+    gap: 1.5rem;
+    min-height: 5rem;
+    padding-inline: max(2rem, calc((100% - 70rem) / 2));
+  }
+
+  .marca-direita {
+    text-align: left;
+  }
+
+  .marca strong {
+    font-size: 1.25rem;
+  }
+
+  .marca span {
+    font-size: 1rem;
+  }
+
+  .topo-direita {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 2rem;
+    margin-inline-start: auto;
+  }
+
+  .navegacao {
+    display: flex;
+    align-self: stretch;
+    gap: 2rem;
+  }
+
+  .navegacao a {
+    display: flex;
+    align-items: center;
+    padding-top: 0.25rem;
+    border-bottom: 0.25rem solid transparent;
+    color: var(--cor-primaria);
+    font-family: var(--fonte-titulo);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-decoration: none;
+  }
+
+  .navegacao a:hover {
+    text-decoration: underline;
+  }
+
+  .navegacao a.ativo {
+    border-bottom-color: var(--cor-primaria);
+    color: var(--cor-titulo);
+    font-weight: 700;
+  }
+
+  .topo-direita .ouvir {
+    min-height: 3rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    font-family: var(--fonte-titulo);
+    font-size: 1.0625rem;
+    letter-spacing: normal;
+  }
+
+  .ouvir-celular {
+    display: none;
+  }
+
+  .conteudo {
+    gap: 2rem;
+    width: min(100% - 4rem, 70rem);
+    margin-inline: auto;
+    padding: 3.5rem 0;
+  }
+
+  .titulo {
+    font-size: 3rem;
+    font-weight: 700;
+  }
 }
