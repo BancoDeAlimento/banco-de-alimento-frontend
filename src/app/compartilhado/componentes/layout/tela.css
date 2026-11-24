@@ -103,9 +103,26 @@
   background: var(--cor-selecionado);
 }
 
-/* Rodapé: só no desktop. */
+/* Rodapé: aparece em dispositivos móveis e desktops. */
 .rodape {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: var(--cor-titulo);
+  color: #fff;
+}
+
+@media (min-width: 64rem) {
+  .rodape {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.rodape a {
+  color: #fff;
 }
 
 /* Telas maiores que um celular: coluna no meio. */
